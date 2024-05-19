@@ -15,6 +15,14 @@ h1{
     color: #f7f7f7;
     margin-bottom: 15px;
 }
+h2{
+    
+    font-size: 1.875rem;
+    font-weight: 600;
+    padding-bottom: 15px;
+    margin-left: 10px;
+    
+}
 h3{
     font-size: 1.35rem;
     font-weight: 600;
@@ -43,13 +51,15 @@ a {
 section{
     width: 85%;
     margin: 0 auto;
+    padding-bottom: 20px;
 }
 /* hero styling */
 section.hero{
     text-align: center;
-    background-image: url("https://img.freepik.com/free-photo/overhead-view-vegetables-black-background_23-2147915970.jpg?t=st=1715643426~exp=1715647026~hmac=b3a6dc678e5481380a8129f998cd25737a6ea76d987d9e35464d9ad94caa406b&w=1380");
+    background-image: url(./images/overhead-view-vegetables-black-background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top center;
     height: 55vh;
     width: 100%;
     display: flex;
@@ -91,19 +101,11 @@ section.hero{
 .popular{ 
     position: relative;
 }
-.popular h2{
-    
-    font-size: 1.875rem;
-    font-weight: 600;
-    padding-bottom: 15px;
-    margin-left: 10px;
-    
-}
-.grid{
-    display: grid;
+ 
+.grid{  display: grid;
     grid-template-columns: repeat(12, 1fr);
     /* grid-template-rows: repeat(10, 1fr); */
-    gap: 10px;
+    gap: 15px;
     justify-items: center;
     
 }
@@ -138,6 +140,7 @@ section.hero{
 
 .recipe--card h3{
     margin-left: 10px;
+    line-height: 1.3;
 }
 
 

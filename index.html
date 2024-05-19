@@ -19,7 +19,7 @@
         <nav class="nav">
             <ul class="links">
                 <li class="link"><a href="./">Home</a></li>
-                <li class="link"><a href="">Saved Recipes</a></li>
+                <li class="link">Saved Recipes</li>
             </ul>
         </nav>
     </header>
@@ -27,15 +27,15 @@
         <section class="hero">
             <div class="search--container">
                 <h1>Find a Recipe</h1>
-                <input type="text" name="search" id="search" placeholder="Enter an ingredient to get started">
-                <button type="submit" class="search--btn"><a href="./results.html"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></a></button>
+                <input type="text" name="search" id="search" placeholder="Enter an ingredient to get started" required>
+                <button type="submit" class="search--btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
             </div>
         </section>
-        <section class="popular">
-            <h2 class="popular--section--heading">Popular Recipes</h2>
-                        
-            <div class="popular--recipes grid">                
-                <a class="recipe--card" href="./recipe.html">
+
+        <section class="search--results">
+            <h2 class="search--heading"><!--Enter Number of results here --> Results for <!--Enter search value here --></h2>
+            <div id="search--results--container"  class="grid">
+                <!-- <a class="recipe--card" href="./recipe.html">
                     <div class="recipe--image">
                         <img src="https://img.spoonacular.com/recipes/652824-556x370.jpg" alt="recipe image">
                     </div>
@@ -48,7 +48,7 @@
                       
                     </div>
                       
-                    <!-- <button type="button" class="show--recipe"><a href="">Show Recipe</a></button> -->
+                    
                 </a>
                 <a class="recipe--card" href="./recipe.html">
                     
@@ -63,7 +63,43 @@
                       <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
 
                     </div>
-                    <!-- <button type="button" class="show--recipe"><a href="">Show Recipe</a></button> -->
+                    
+                </a> -->
+            </div>
+        </section>
+        <section class="popular">
+            <h2 class="popular--section--heading">Popular Recipes</h2>
+                        
+            <div class="popular--recipes grid">                
+                <!-- <a class="recipe--card" href="./recipe.html">
+                    <div class="recipe--image">
+                        <img src="https://img.spoonacular.com/recipes/652824-556x370.jpg" alt="recipe image">
+                    </div>
+                    <h3 class="recipe--name">My Asian Fried Fish Fillet</h3>
+                    <div class="recipe--information">
+                      
+                      <span class="cuisine--type">Main</span>
+                      <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      
+                    </div>
+                      
+                    
+                </a>
+                <a class="recipe--card" href="./recipe.html">
+                    
+                    <div class="recipe--image">
+                        <img src="https://img.spoonacular.com/recipes/660736-556x370.jpg" alt="recipe image">
+                    </div>
+                    <h3 class="recipe--name">Soy Ginger Glazed Halibut w/ Ginger Peach Relish</h3>
+                    <div class="recipe--information">
+                      
+                      <span class="cuisine--type">Main</span>
+                      <span class="likes">(333)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+
+                    </div>
+                    
                 </a>
                 <a class="recipe--card" href="./recipe.html">
                     
@@ -78,7 +114,7 @@
                       <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
 
                     </div>
-                    <!-- <a href="">Show Recipe</a> -->
+                    
                 </a>
                 <a class="recipe--card" href="./recipe.html">
                     
@@ -93,7 +129,7 @@
                       <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
 
                     </div>
-                    <!-- <a href="">Show Recipe</a> -->
+                    
                 </a>
                 <a class="recipe--card" href="./recipe.html">
                     
@@ -108,7 +144,7 @@
                       <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
 
                     </div>
-                    <!-- <button type="button" class="show--recipe"><a href="">Show Recipe</a></button> -->
+                    
                 </a>
                 <a class="recipe--card" href="./recipe.html">
                     
@@ -123,7 +159,7 @@
                       <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
 
                     </div>
-                    <!-- <button type="button" class="show--recipe"><a href="">Show Recipe</a></button> -->
+                    
                 </a>
                  <a class="recipe--card" href="./recipe.html"> 
                     
@@ -139,63 +175,12 @@
 
                     </div>
                     
-                </a> 
+                </a>  -->
             </div>
         </section>
 
     </main>
-    <!-- Recipe Modal -->
-    <section class="recipe--content">
-        <h2 class="recipe--title">My Asian Fried Fish Fillet</h2>
-      <div class="recipe--container">
-        <div class="image--container">
-            <img src="https://img.spoonacular.com/recipes/652824-556x370.jpg" alt="">
-        </div>
-        <div class="cooking--info">
-            <ul>
-                <li class="info">Prep time: 10 min</li>
-                <li class="info">Cook time: 20 min</li>
-                <li class="info">Servings: 5</li>
-            </ul>
-        </div>
-        <div class="ingredients">
-            <h3>Ingredients</h3>
-            <ul class="ingredients--list">
-                <li class="ingredient">Lorem</li>
-                <li class="ingredient">Ipsum</li>
-                <li class="ingredient">Doloris</li>
-            </ul>
-        </div>
-        <div class="directions--container">
-            <h3>Instructions</h3>
-            <ol class="directions">
-                <li class="directions--info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo, eaque?</li>
-                <li class="directions--info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat, nam! Velit tempora deserunt quo maiores.</li>
-                <li class="directions--info">Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-                <li class="directions--info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque necessitatibus quibusdam enim inventore facilis, temporibus laudantium impedit aspernatur.</li>
-            </ol>
-        </div>
-    </div> 
-    <h3>Similar Dishes</h3>
-    <div class="related--dishes grid">
-        
-        <div class="recipe--card">
-                    
-            <div class="recipe--image">
-                <img src="https://img.spoonacular.com/recipes/660736-556x370.jpg" alt="recipe image">
-            </div>
-            <h3 class="recipe--name">Soy Ginger Glazed Halibut w/ Ginger Peach Relish</h3>
-            <div class="recipe--information">
-              
-              <span class="cuisine--type">Main</span>
-              <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-              <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
-
-            </div>
-            <!-- <button type="button" class="show--recipe"><a href="">Show Recipe</a></button> -->
-        </div>
-    </div> 
-    </section>
+   
     
     
 <script src="script.js"></script> 
