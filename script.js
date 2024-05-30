@@ -301,6 +301,7 @@ console.log(window.location.pathname);
     displaySavedBtn.addEventListener('click', showSavedRecipes)
    switch(window.location.pathname){
       case '/':
+     case '/RecipEasy/':
         // addPopularRecipes()
 
       searchBtn.addEventListener('click',searchRecipes)
@@ -310,6 +311,7 @@ console.log(window.location.pathname);
 
     
       case `/recipe.html`:
+     case '/RecipEasy/recipe.html':
            
            displayIngredients()
            displayRecipeImage()
