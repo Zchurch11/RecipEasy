@@ -1,23 +1,58 @@
 //  random main course call https://api.spoonacular.com/recipes/random?number=1&type=main_course&apiKey=c52518723c08438e862a568db1340ee7
+// Primary api key: '7c82070af4334fd1be1f34acee57a522'
 const apiURL = 'https://api.spoonacular.com/recipes/'
 const apiKey = 'c52518723c08438e862a568db1340ee7'
-
+const recipeID = window.location.search.split('=')[1];
 const searchInput = document.getElementById('search')
-const searchContainer = document.querySelector('search--container')
-
+const searchContainer = document.querySelector('.search--container')
+const searchResultsContainer = document.getElementById('search--results--container')
 const searchBtn = document.querySelector('.search--btn')
+const cookingInfoContainer = document.querySelector('.cooking--info--grid')
+const displaySavedBtn = document.querySelector('.save--btn')
+const savedList = document.querySelector('.saved--list')
+const recipeTitle = document.querySelector('.recipe--title')
 
 
+async function displaySummary(data){
+  // const results = await getData(`${recipeID}/summary?apiKey=${apiKey}`) 
+   
+  
+  const recipeSummary = document.querySelector('.recipe--summary').innerHTML = `${data.summary}`
+  
+}
 
 
 async function getData(endpoint){
+  
     const response = await fetch(`${apiURL}${endpoint}`)
     const data = await response.json()
-    return (data);
+    // const item = {...data}
+    // console.log(data.instructions);
+     
+  
+        
+    return data  
+}
+function displayInstructions(data){
+    
+  // const  recipes  = await getData(`${recipeID}/analyzedInstructions?apiKey=${apiKey}`)
+  
+  data.forEach(recipe => {
+    recipe.steps.forEach(step =>{
+      const olLi = document.createElement('li')
+      olLi.textContent = `${step.step}`
+      const directions = document.querySelector('.directions').innerHTML = data.instructions
+    })
+   console.log(data); 
+   
+  
+     
+  })
+  
 }
 
 async function addPopularRecipes(){
-    const  { recipes }  = await getData(`random?number=10&type=main_course&apiKey=${apiKey}`)
+    const  { recipes }  = await getData(`random?number=10&apiKey=${apiKey}`)
     recipes.forEach(recipe => {
       // replace with createRecipeCard() ??
       const a = document.createElement('a')
@@ -30,9 +65,9 @@ async function addPopularRecipes(){
                       <h3 class="recipe--name">${recipe.title}</h3>
                       <div class="recipe--information">
                         
-                        <span class="cuisine--type">${recipe.dishTypes[0]}</span>
-                        <span class="likes">(${recipe.aggregateLikes})<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                        <span class="cook--time">${recipe.readyInMinutes} min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                        <span class="rating">${recipe.spoonacularScore > 10 ? recipe.spoonacularScore.toFixed(0) / 10: recipe.spoonacularScore.toFixed(1)}/10 <i class="fa-solid fa-star" style="color: #fab64f;"></i></span>
+                        
+                        <span class="cook--time">${recipe.readyInMinutes} min <i class="fa-solid fa-clock" style="color: #fab64f;"></i></span>
   
                       </div>
          ` 
@@ -44,7 +79,7 @@ async function addPopularRecipes(){
 
 
 async function displayRecipeImage(){
-  const recipeID = window.location.search.split('=')[1]
+  
   const imageContainer = document.querySelector('.image--container')
   const image = document.createElement('img')
   image.src = ` https://img.spoonacular.com/recipes/${recipeID}-556x370.jpg`
@@ -52,47 +87,48 @@ async function displayRecipeImage(){
   imageContainer.appendChild(image)
 }
 async function displayIngredients() {
-  const recipeID = window.location.search.split('=')[1];
-  const ingredients = await getData(`${recipeID}/information?apiKey=${apiKey}`);
+  const ingredients = await getData(`${recipeID}/information?includeNutrition=false&addWinePairing=false&addTasteData=false&apiKey=${apiKey}`);
+  console.log(ingredients);
   // display title and additional info
-  const recipeTitle = document.querySelector('.recipe--title').textContent = `${ingredients.title}`
+   recipeTitle.textContent = `${ingredients.title}`
     const cookingInfoContainer = document.querySelector('.cooking--info--grid')
     cookingInfoContainer.innerHTML = `
-    
+                
                 <span class="info">Cook time: ${ingredients.readyInMinutes} min</span>
                 <span class="info">Servings: ${ingredients.servings}</span>
                 <span class="save--icon"><i class="fa-regular fa-bookmark fa-xl"></i></span>
-                <span class="save--icon--filled"><i class="fa-solid fa-bookmark fa-xl" style="color: #000000;"></i></span>
+                <span class="save--icon--filled"><i class="fa-solid fa-bookmark fa-xl" style="color: #fab64f;"></i></span>
     `
     // display ingredients
-  const ingredientsList = document.querySelector('.ingredients--list');
+  const ingredientsList = document.querySelector('.ingredients');
   ingredients.extendedIngredients.map(extendedIngredient =>{
   const ulLi = document.createElement('li')
     ulLi.textContent = `${extendedIngredient.original}`
     ingredientsList.appendChild(ulLi)
   })
+    displayInstructions(ingredients)
+    displaySummary(ingredients)
+    
+    // console.log(data);
+    // return ingredients
     
   }
 
 
-async function displayInstructions(){
-    const recipeID = window.location.search.split('=')[1]
-    const  recipes  = await getData(`${recipeID}/analyzedInstructions?apiKey=${apiKey}`)
+ function displayInstructions(ingredients){
     
-    recipes.forEach(recipe => {
-      recipe.steps.forEach(step =>{
+    
+      ingredients.analyzedInstructions[0].steps.forEach((step) => {
+        console.log(step);
         const olLi = document.createElement('li')
         olLi.textContent = `${step.step}`
         const directions = document.querySelector('.directions').appendChild(olLi)
       })
-      
     
-       
-    })
     
 }
 async function displaySimilarRecipes(){
-  const recipeID = window.location.search.split('=')[1]
+  
   const  similarRecipes  = await getData(`${recipeID}/similar?apiKey=${apiKey}`)
     similarRecipes.forEach(similarRecipe => {
       const a = document.createElement('a')
@@ -105,9 +141,9 @@ async function displaySimilarRecipes(){
                       <h3 class="recipe--name">${similarRecipe.title}</h3>
                       <div class="recipe--information">
                         
-                        <span class="cuisine--type">${similarRecipe.servings} servings</span>
+                        <span class="cuisine--type">${similarRecipe.servings} ${similarRecipe.servings > 1 ? 'servings': 'serving'}</span>
                        
-                        <span class="cook--time">${similarRecipe.readyInMinutes} min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                        <span class="cook--time">${similarRecipe.readyInMinutes} min <i class="fa-solid fa-clock" style="color: #fab64f;"></i></span>
   
                       </div>
          ` 
@@ -117,8 +153,11 @@ async function displaySimilarRecipes(){
 async function searchRecipes(e){
   
   const searchTerm = searchInput.value
-  const recipeID = window.location.search.split('=')[1]
-   const {results} = await getData(`complexSearch?query=${searchTerm}&number=1&apiKey=c52518723c08438e862a568db1340ee7`) 
+  while (searchResultsContainer.firstElementChild){
+            searchResultsContainer.removeChild(searchResultsContainer.firstElementChild)
+            
+           } 
+   const {results} = await getData(`complexSearch?query=${searchTerm}&number=1&apiKey=${apiKey}`) 
    results.forEach(result => {
     const a = document.createElement('a')
        a.classList.add('recipe--card')
@@ -134,42 +173,153 @@ async function searchRecipes(e){
 
                     </div>
        ` 
-   
-          const searchResultsContainer = document.getElementById('search--results--container').appendChild(a)
+           
+           searchResultsContainer.appendChild(a)
          
-    console.log(results)
+    console.log(searchResultsContainer)
    })
-   const searchHeading = document.querySelector('.search--heading').textContent = `${results.totalResults} Results for ${searchTerm}.`
+   const searchHeading = document.querySelector('.results--heading')
+   searchHeading.style.display = 'block'
+   
+   searchHeading.textContent = `${results.length} ${results.length > 1 || results.length === 0 ? `Results for ${searchTerm} `: `Result for ${searchTerm}`}`
+   console.log(searchHeading)
+  clearInput()
    
   
     
 }
 
 function clearInput(){
-  searchInput.innerHTML = ''
+  searchInput.value = ''
+  
+  
 }
 
 
 
+function saveRecipe(e) {  
+  
+  const title = recipeTitle.textContent
+  const saveIconFilled = document.querySelector('.save--icon--filled');
+  const saveIcon = document.querySelector('.save--icon');
+  const savedItem = { id: `${recipeID}`, name: `${title}`, saved: false };
+  // updateList()
+  
+  
+  let itemsList = JSON.parse(localStorage.getItem('savedItems')) || [];
+  
+  const existingItemIndex = itemsList.findIndex((item) => item.name === savedItem.name);
+  const updatedList = itemsList.filter((item)=> {
+      item.name !== savedItem.name})
+  if (existingItemIndex >= 0 && e.target.classList.contains('fa-solid'))
+    {
+    saveIconFilled.style.display = 'inline'
+    saveIcon.style.display = 'none'
+    console.log('ran');
+    
+    
+    
+    saveIconFilled.style.display = 'none'
+    saveIcon.style.display = 'inline'
+      localStorage.setItem('savedItems', JSON.stringify(updatedList))
+        // updateList()
+        // console.log(updatedList + 'after filter', itemsList + 'after')
+      savedList.innerHTML = ''
+  
+       updateList()
+ 
+} else if (  e.target.classList.contains('fa-bookmark') ){
+    saveIconFilled.style.display = 'none'
+    saveIcon.style.display = 'inline'
+    
+    
+      console.log('before update saved: ' + savedItem.saved);
+      
+      localStorage.setItem('savedItems', JSON.stringify(itemsList));
+      
+      
+         if (existingItemIndex === -1) {
+          saveIconFilled.style.display = 'none';
+          saveIcon.style.display = 'inline';
+          itemsList.push(savedItem);
+          savedItem.saved = true
+          console.log(savedItem + 'after update');
+          localStorage.setItem('savedItems', JSON.stringify(itemsList));
+          updateList(saveIcon)
+          // console.log('after update save: ' + savedItem.saved,);
+         } 
+      
+        
+          
+    
+
+  // console.log(itemsList);
+
+saveIconFilled.style.display = 'inline';
+          saveIcon.style.display = 'none';
+    // })
+    
+}
+} 
+
+function updateList(){
+  
+    JSON.parse(localStorage.getItem('savedItems'))
+  console.log('items updated');
+          
+           Object.keys(localStorage).forEach(key => {
+            const value = JSON.parse(localStorage.getItem(key))
+            console.log( key, value);
+           value.forEach((value) =>{
+            
+            const ulLi = document.createElement('li')
+            ulLi.innerHTML = `<a href="./recipe.html?id=${value.id}">${value.name}</a><i class="fa-regular fa-trash-can"></i>`
+            savedList.appendChild(ulLi)
+            JSON.parse(localStorage.getItem('savedItems'))
+            
+           }) 
+          })
+          
+          
+      }
+
+function showSavedRecipes(){
+  const savedRecipesContainer = document.querySelector('.saved--recipes--container')
+  savedRecipesContainer.classList.toggle('active')
+    console.log('Working');
+  }
+  function removeRecipeFromSavedList(e){
+    if(e.target.classList.contains('fa-trash-can')){
+      console.log('deleting', e);
+    }
+    
+  }
+
 
 console.log(window.location.pathname);
-
-
+    savedList.addEventListener('click', removeRecipeFromSavedList)
+    displaySavedBtn.addEventListener('click', showSavedRecipes)
    switch(window.location.pathname){
       case '/':
-//       addPopularRecipes()
-//       break
-       searchBtn.addEventListener('click', searchRecipes)
-       clearInput() 
+        // addPopularRecipes()
+
+      searchBtn.addEventListener('click',searchRecipes)
+       updateList() 
        break
    
 
     
       case `/recipe.html`:
-//       displayInstructions()
-//       displayIngredients()
-//       displayRecipeImage()
-         displaySimilarRecipes()
+           
+           displayIngredients()
+           displayRecipeImage()
+           updateList()
+          //  saveRecipe()
+           cookingInfoContainer.addEventListener('click', saveRecipe)
+           //displaySimilarRecipes()
+           
+           
+           
       break
     }
 //     default:

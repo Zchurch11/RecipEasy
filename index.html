@@ -12,16 +12,28 @@
 </head>
 <body>
     <header class="banner">
-        <div class="logo--container">
-            RecipEasy
-            <img src="" alt="">
+        <div class="nav--container">
+            <div class="logo--container">
+                RecipEasy
+                <img src="" alt="">
+            </div>
+            <nav class="nav">
+                <ul class="links">
+                    <li class="link"><a href="./">Home</a></li>
+                    <li class="link save--btn">Saved Recipes</li>
+                </ul>
+            </nav>  
         </div>
-        <nav class="nav">
-            <ul class="links">
-                <li class="link"><a href="./">Home</a></li>
-                <li class="link">Saved Recipes</li>
-            </ul>
-        </nav>
+        <div class="saved--recipes--container">
+            <h2 class="saved--heading">Your Saved Recipes</h2>
+            <div class="saved--recipes">
+                <ul class="saved--list">
+                    
+                </ul>
+            </div>
+        </div>
+        
+        
     </header>
     <main>
         <section class="hero">
@@ -31,11 +43,13 @@
                 <button type="submit" class="search--btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
             </div>
         </section>
-
+        
+            
+        
         <section class="search--results">
-            <h2 class="search--heading"><!--Enter Number of results here --> Results for <!--Enter search value here --></h2>
+            <h2 class="results--heading"><!--Enter Number of results here --> Results for <!--Enter search value here --></h2>
             <div id="search--results--container"  class="grid">
-                <!-- <a class="recipe--card" href="./recipe.html">
+                <a class="recipe--card" href="./recipe.html">
                     <div class="recipe--image">
                         <img src="https://img.spoonacular.com/recipes/652824-556x370.jpg" alt="recipe image">
                     </div>
@@ -44,7 +58,22 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
+                      
+                    </div>
+                      
+                    
+                </a>
+                <a class="recipe--card" href="./recipe.html">
+                    <div class="recipe--image">
+                        <img src="https://img.spoonacular.com/recipes/652824-556x370.jpg" alt="recipe image">
+                    </div>
+                    <h3 class="recipe--name">My Asian Fried Fish Fillet</h3>
+                    <div class="recipe--information">
+                      
+                      <span class="cuisine--type">Main</span>
+                      <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
                       
                     </div>
                       
@@ -60,11 +89,26 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(333)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
-                </a> -->
+                </a>
+                <a class="recipe--card" href="./recipe.html">
+                    
+                    <div class="recipe--image">
+                        <img src="https://img.spoonacular.com/recipes/660736-556x370.jpg" alt="recipe image">
+                    </div>
+                    <h3 class="recipe--name">Soy Ginger Glazed Halibut w/ Ginger Peach Relish</h3>
+                    <div class="recipe--information">
+                      
+                      <span class="cuisine--type">Main</span>
+                      <span class="likes">(333)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
+
+                    </div>
+                    
+                </a> 
             </div>
         </section>
         <section class="popular">
@@ -80,7 +124,7 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
                       
                     </div>
                       
@@ -95,8 +139,8 @@
                     <div class="recipe--information">
                       
                       <span class="cuisine--type">Main</span>
-                      <span class="likes">(333)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="likes">(333)<i class="fa-solid fa-heart fa-sm" style="color: #f44848;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
@@ -111,7 +155,7 @@
                     <div class="recipe--information">   
                       <span class="cuisine--type">Starter</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
@@ -126,7 +170,7 @@
                         
                       <span class="cuisine--type">Starter</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
@@ -141,7 +185,7 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
@@ -156,7 +200,7 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
@@ -171,7 +215,7 @@
                       
                       <span class="cuisine--type">Main</span>
                       <span class="likes">(3)<i class="fa-solid fa-heart fa-sm" style="color: #ff0000;"></i></span>
-                      <span class="cook--time">30 min <i class="fa-regular fa-clock" style="color: #ffffff;"></i></span>
+                      <span class="cook--time">30 min <i class="fa-regular fa-clock clock" ></i></span>
 
                     </div>
                     
