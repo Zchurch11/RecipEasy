@@ -302,7 +302,7 @@ console.log(window.location.pathname);
    switch(window.location.pathname){
       case '/':
      case '/RecipEasy/':
-        // addPopularRecipes()
+         addPopularRecipes()
 
       searchBtn.addEventListener('click',searchRecipes)
        updateList() 
