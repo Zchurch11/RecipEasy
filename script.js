@@ -300,17 +300,16 @@ console.log(window.location.pathname);
     savedList.addEventListener('click', removeRecipeFromSavedList)
     displaySavedBtn.addEventListener('click', showSavedRecipes)
    switch(window.location.pathname){
-      case '/':
+     case '/':
      case '/RecipEasy/':
-         addPopularRecipes()
-
-      searchBtn.addEventListener('click',searchRecipes)
+       addPopularRecipes()
+       searchBtn.addEventListener('click',searchRecipes)
        updateList() 
        break
    
 
     
-      case `/recipe.html`:
+     case `/recipe.html`:
      case '/RecipEasy/recipe.html':
            
            displayIngredients()
