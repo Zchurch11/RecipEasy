@@ -227,6 +227,9 @@ section.hero{
     
 }
 /* Recipe Styling */
+.recipe--title{
+    color: #000;
+}
 .recipe--content{
     border: 2px solid;
     width: 80%;
