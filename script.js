@@ -374,11 +374,11 @@ console.log(window.location.pathname);
     
       case `/recipe.html`:
            
-           displayIngredients()
+           displayRecipeInfo()
            displayRecipeImage()
            updateList()
           //  saveRecipe()
-           cookingInfoContainer.addEventListener('click', saveRecipe)
+           cookingInfoContainer.addEventListener('click', setupSaveDeleteListeners())
            //displaySimilarRecipes()
            
            
