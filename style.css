@@ -258,7 +258,11 @@ input[type=radio]{
 
 /* Recipe Styling */
 .recipe--title{
+<<<<<<< HEAD
     color: hsl(0, 0%, 0%);
+=======
+    color: #000;
+>>>>>>> 0d77ece1af96944df1905a743b342b77046d2142
 }
 .recipe--content{
     border: 2px solid;

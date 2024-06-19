@@ -346,70 +346,45 @@ function updateList() {
   });
 }
 
-function showSavedRecipes() {
-  const savedRecipesContainer = document.querySelector(
-    ".saved--recipes--container"
-  );
-  savedRecipesContainer.classList.toggle("active");
-  
-}
-// Remove a recipe from saved list
-function removeRecipeFromSaved(e) {
-  Object.keys(localStorage).forEach((key) => {
-    const savedItems = JSON.parse(localStorage.getItem(key));
+function showSavedRecipes(){
+  const savedRecipesContainer = document.querySelector('.saved--recipes--container')
+  savedRecipesContainer.classList.toggle('active')
+    console.log('Working');
+  }
+  function removeRecipeFromSavedList(e){
+    if(e.target.classList.contains('fa-trash-can')){
+      console.log('deleting', e);
+    }
     
-    savedItems.forEach((item) => {
-      
-      if (
-        e.target.classList.contains("fa-trash-can") &&
-        item.name === e.target.parentElement.textContent
-      ) {
-        deleteRecipe(item);
-        savedList.innerHTML = "";
-        updateList();
-        // change icons after removing item from list and storage
-        if (window.location.pathname === "/recipe.html") {
-          const saveIcon = cookingInfoContainer.children[2].children[0];
-          const saveIconFilled = cookingInfoContainer.children[2].children[1];
-          saveIcon.style.display = "inline";
-          saveIconFilled.style.display = "none";
-        }
-      }
-    });
-  });
-}
+  }
 
 
-savedList.addEventListener("click", removeRecipeFromSaved);
-displaySavedBtn.addEventListener("click", showSavedRecipes);
-switch (window.location.pathname) {
-  case "/":
-    // addPopularRecipes()
-    checkInputNotBlank();
-    searchBtn.addEventListener("click", searchRecipes);
-    updateList();
-    const recipeFilter = document
-      .querySelector(".recipe--filter")
-      .addEventListener("click", () => showSearchInstructions());
-    const ingredientFilter = document
-      .querySelector(".ingredient--filter")
-      .addEventListener("click", () => showSearchInstructions());
-    const cuisineFilter = document
-      .querySelector(".cuisine--filter")
-      .addEventListener("click", () => showSearchInstructions());
+console.log(window.location.pathname);
+    savedList.addEventListener('click', removeRecipeFromSavedList)
+    displaySavedBtn.addEventListener('click', showSavedRecipes)
+   switch(window.location.pathname){
+      case '/':
+        // addPopularRecipes()
 
-    break;
+      searchBtn.addEventListener('click',searchRecipes)
+       updateList() 
+       break
+   
 
-  case `/recipe.html`:
-    displayRecipeInfo();
-    displayRecipeImage();
-    updateList();
-    setupSaveDeleteListeners();
-
-    //displaySimilarRecipes()
-
-    break;
-}
+    
+      case `/recipe.html`:
+           
+           displayIngredients()
+           displayRecipeImage()
+           updateList()
+          //  saveRecipe()
+           cookingInfoContainer.addEventListener('click', saveRecipe)
+           //displaySimilarRecipes()
+           
+           
+           
+      break
+    }
 //     default:
 //       console.log('not a page')
 //       break
