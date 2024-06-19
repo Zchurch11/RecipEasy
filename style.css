@@ -1,4 +1,10 @@
-/* https://www.realtimecolors.com/?colors=011008-f3fff8-20D873-80a8fa-614bf8&fonts=Inter-Inter Possible color palette*/
+/* --text: hsl(30, 17%, 2%);
+--background: hsl(45, 20%, 96%);
+--primary: hsl(39, 96%, 48%);
+--secondary: hsl(148, 96%, 48%);
+--accent: hsl(240, 27%, 41%);*/
+/* Shades */
+/* use 10%, 20% etc */
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +13,7 @@
 body{
     font-size: 1.1rem;
     font-family: "Poppins", sans-serif;
-    background-color: #faf0f0;
+    background-color: hsl(45, 20%, 96%);
     
 }
 
@@ -40,6 +46,9 @@ section{
     margin: 0 auto;
     padding-bottom: 20px;
 }
+i {
+    cursor: pointer;
+}
 /* Nav styling */
 .banner{
     position: relative;
@@ -55,6 +64,11 @@ section{
 }
 .nav--container a {
     color: #f7f7f7;
+    
+}
+.nav--container li:hover{
+    opacity: .7;
+    cursor: pointer;
 }
 .nav--container li {
     display: inline;
@@ -62,7 +76,7 @@ section{
 }
 .nav--container li:last-child {
     
-        background: #00c25e;
+        background: hsl(39, 96%, 48%);
         color: #010302;
         padding: 10px 10px;
         border-radius: 30px;
@@ -72,22 +86,25 @@ section{
 /* saved recipes styling */
 .saved--recipes--container.active{
     width: 30%;
-    background-color: slategray;
+    background-color: hsl(148, 96%, 80%);
     position: absolute;
     right: 0;
     height: 60vh;
     display: block;
+    z-index: 1;
 
 }
 .saved--recipes--container{
     width: 30%;
-    background-color: slategray;
     position: absolute;
     right: 0;
     height: 60vh;
     padding: 20px;
     display: none;
 
+}
+.saved--recipes--container a:hover{
+    color: hsl(240, 27%, 41%);
 }
 .saved--recipes--container ul{
     list-style: none;
@@ -100,18 +117,17 @@ section{
     font-size: 1.45rem;
     margin: 0;
 }
-.save--icon--filled{
-    display: none;
-}
-/* .save--icon--filled.active, .save--icon.active{
-    display: inline;
-} */
+
 
 
 /* hero styling */
 section.hero{
     text-align: center;
-    background-image: url(./images/overhead-view-vegetables-black-background.jpg);
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),url(./images/overhead-view-vegetables-black-background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -138,8 +154,12 @@ section.hero{
 .search--container{
     width: 474px;
     /* max-width: 35%; */
-    position: relative;
-    
+    position: relative; 
+}
+.search--info{
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: hsl(39, 96%, 48%);
 }
 .hero button{
     cursor: pointer;
@@ -153,6 +173,26 @@ section.hero{
 .hero button:hover{
     opacity: .7;
     scale: 1;
+}
+
+.filter--container{
+    display: flex;
+    align-items: center; 
+}
+.filter--label{
+    margin-right: 10px;
+}
+input[type=radio]{
+    accent-color: hsl(240, 27%, 41%);
+}
+
+.hero fieldset{
+    display: flex;
+    justify-content: space-around ;
+    width: 85%;
+    margin: 10px auto;
+    color: #fff;
+    
 }
 /* Popular dishes  */
 .popular{ 
@@ -171,12 +211,16 @@ section.hero{
     /* width: 70%; */
     box-shadow: 10px 20px 10px rgba(0, 0, 0, .2);
     /* height: 360px; */
-    background-color: hsl(147, 74%, 49%, 20%);
+    background-color: hsl(148, 74%, 49%, 20%);
      display: flex;
    flex-direction: column;
    grid-column: span 2;
    border-radius: 20px;
+   transition: all 0.2s ease-in-out;
     
+}
+.recipe--card:hover{
+    scale: 102%;
 }
 .recipe--image{
     width: 100%;   
@@ -192,7 +236,6 @@ section.hero{
      display: flex;
      justify-content: space-between;
      flex-wrap: wrap;
-    /*flex-direction: column; */
 }
 
 .recipe--card h3{
@@ -213,20 +256,10 @@ section.hero{
     
 }
 
-.show--recipe {
-    background-color: black;
-    color: white;
-    padding: 5px 20px;
-    border-radius: 15px;
-    font-size: inherit;
-    font-family: inherit;
-    margin-top: 10px;
-}
-.show--recipe > a{
-    color: white;
-    
-}
 /* Recipe Styling */
+.recipe--title{
+    color: hsl(0, 0%, 0%);
+}
 .recipe--content{
     border: 2px solid;
     width: 80%;
@@ -245,7 +278,7 @@ section.hero{
 }
 .directions {
     padding: 30px;
-    background-color: hsla(149, 100%, 38%, 0.102);
+    background-color: hsla(148, 100%, 38%, 30%);
     line-height: 1.75;
     border-radius: 20px;
 
@@ -254,13 +287,9 @@ section.hero{
 .ingredients--container {
     padding: 20px 0 ;
     width: 65%;
-    
-    
-    
-    
 }
 .ingredients{
-background-color: hsla(0, 0%, 0%, 0.2);
+background-color: hsl(39, 96%, 48% , 30%);
 line-height: 1.75;
 padding: 30px;
 border-radius: 20px;
@@ -271,17 +300,11 @@ border-radius: 20px;
     
 }
 
-.directions li::marker {
+.directions li::marker, .ingredients li::marker  {
 	font-size: 20px;
-	color: hsl(36, 94%, 65%);
+	color: hsl(240, 27%, 41%);
 	font-weight: 600;
 }
-.ingredients li::marker {
-	font-size: 20px;
-	color: hsl(36, 94%, 65%);
-	font-weight: 600;
-}
-
 
 .image--container{
     width: 60%;
@@ -292,12 +315,13 @@ border-radius: 20px;
     margin: 0 auto;
     border-radius: 20px;
 }
+
 .cooking--info--grid{
-    width: 300px;
+    width: 60%;
     margin: 15px auto;
-    background-color: rgba(0, 194, 94, 0.302);
     position: relative;
     display: flex;
+    justify-content: space-around;
     
 }
 
@@ -314,7 +338,7 @@ border-radius: 20px;
     font-weight: 500;
 }
 
-@media (min-width: 324px) and (max-width: 535px ){
+@media (min-width: 320px) and (max-width: 535px ){
     section.hero{
         height: 55vh;
     }
@@ -340,6 +364,13 @@ border-radius: 20px;
     .hero input{
         width: 100%;
     }
+    .hero fieldset{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    input[type=radio]{
+        transform: scale(1.5);
+    }
     .hero button{
         right: 1px;
         top: 72px;
@@ -353,7 +384,9 @@ border-radius: 20px;
     }
     /* recipe page media queries */
     .recipe--content{
-       width: 90%; 
+       width: 100%; 
+       padding: 10px;
+       border: none;
     }
     .image--container{
         width: 100%;
@@ -371,21 +404,25 @@ border-radius: 20px;
         width: 100%;
     }
 }
-@media (min-width: 1450px ){
+@media (min-width: 800px) and (max-width: 999px ){
+    .image--container{
+        width: 100%;
+    }
+    .directions--container, .ingredients--container{
+        width: 85%;
+    }
+}
+@media (min-width: 1000px ){
     .grid{
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         
     }
-    .hero input{
+    .hero input, .hero fieldset{
         width: 100%;
     }
     .hero button {
         right: 2px;
     }
 }
-/* @media (min-width: 800) and (max-width: 1000 ){
-    section.hero{
-        height: 75;
-    }
-} */
+  
 

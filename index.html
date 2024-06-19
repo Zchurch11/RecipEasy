@@ -14,7 +14,7 @@
     <header class="banner">
         <div class="nav--container">
             <div class="logo--container">
-                RecipEasy
+                <span style="color: hsl(39, 96%, 48% , 90%); font-weight: bold; font-size: 1.4rem;">Recip</span>Easy
                 <img src="" alt="">
             </div>
             <nav class="nav">
@@ -39,8 +39,31 @@
         <section class="hero">
             <div class="search--container">
                 <h1>Find a Recipe</h1>
-                <input type="text" name="search" id="search" placeholder="Enter an ingredient to get started" required>
-                <button type="submit" class="search--btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
+                    
+                    <input type="text" name="search" id="search" placeholder="Enter a search term" required>
+                    <div class="search--instruction">
+                        <p class="search--info"></p>
+                    </div>
+                    <fieldset class="filters">
+                        <legend>Search By:</legend>
+                        <div class="filter--container">
+                         <label class="filter--label" for="recipe--filter" >Recipe</label>
+                         <input class="recipe--filter" value="by--recipe" type="radio" name="filter" id="recipe--filter"  > 
+                        </div>   
+                        <div class="filter--container">
+                         <label class="filter--label" for="type--filter">Type</label>
+                         <input class="ingredient--filter" value="type" type="radio" name="filter" id="type--filter"> 
+                        </div>   
+                        <div class="filter--container">
+                         <label class="filter--label" for="cuisine--filter">Cuisine</label>
+                         <input class="cuisine--filter" value="cuisine" type="radio" name="filter" id="cuisine--filter"> 
+                        </div>   
+                            
+                        
+                        
+                    </fieldset>
+                    <button type="submit" class="search--btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
+                
             </div>
         </section>
         
