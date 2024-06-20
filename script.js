@@ -14,8 +14,10 @@ const searchInfo = document.querySelector(".search--info");
 const displaySavedBtn = document.querySelector(".save--btn");
 const savedList = document.querySelector(".saved--list");
 const recipeTitle = document.querySelector(".recipe--title");
-const searchFilters = document.querySelectorAll("input[type=radio]");
-
+const recipeFilter = document.getElementById('recipe--filter')
+const typeFilter = document.getElementById('type--filter')
+const cuisineFilter = document.getElementById('cuisine--filter')
+console.log(recipeFilter, typeFilter, cuisineFilter);
 
 async function displaySummary(data) {
   const summary = data.summary;
@@ -187,7 +189,7 @@ function showSearchInstructions() {
     
     searchInfo.textContent = "Enter the cuisine type.";
   }
-  
+  console.log(value);
 }
 function determineSearchEndpoint(searchTerm) {
   const searchFilter = checkIsChecked();
@@ -366,7 +368,9 @@ console.log(window.location.pathname);
       case '/':
       case '/RecipeEasy/': 
          addPopularRecipes()
-
+         recipeFilter.addEventListener('click',  showSearchInstructions) 
+         typeFilter.addEventListener('click',  showSearchInstructions) 
+         cuisineFilter.addEventListener('click',  showSearchInstructions)
       searchBtn.addEventListener('click',searchRecipes)
        updateList() 
        break
@@ -374,12 +378,14 @@ console.log(window.location.pathname);
 
     
       case `/recipe.html`:
+      case '/RecipEasy/recipe.html':
            
            displayRecipeInfo()
            displayRecipeImage()
            updateList()
           //  saveRecipe()
-           cookingInfoContainer.addEventListener('click', setupSaveDeleteListeners())
+           cookingInfoContainer.addEventListener('click', setupSaveDeleteListeners)
+          
            //displaySimilarRecipes()
            
            
