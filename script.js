@@ -366,7 +366,7 @@ console.log(window.location.pathname);
     displaySavedBtn.addEventListener('click', showSavedRecipes)
    switch(window.location.pathname){
       case '/':
-      case '/RecipeEasy/': 
+      case '/RecipEasy/': 
          addPopularRecipes()
          recipeFilter.addEventListener('click',  showSearchInstructions) 
          typeFilter.addEventListener('click',  showSearchInstructions) 
